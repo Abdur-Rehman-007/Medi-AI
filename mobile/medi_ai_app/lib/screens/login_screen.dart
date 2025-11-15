@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Icon(Icons.local_hospital, color: Color(0xFF095d7e), size: 40),
                 const SizedBox(height: 10),
                 const Text(
-                  "Medi-AI Health System",
+                  "Medi-AI Health System For BUITEMS",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -108,40 +108,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         )
                       : const Text("Login", style: TextStyle(color: Colors.white, fontSize: 18)),
-                ),
-
-                const SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Don't have an account?"),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const SignupScreen()),
-                        );
-                      },
-                      child: const Text("Sign Up",
-                          style: TextStyle(color: Color(0xFF095d7e), fontWeight: FontWeight.bold)),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF095d7e),
-                    minimumSize: const Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  ),
-                  onPressed: () {},
-                  child: const Text("Login", style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
 
                 const SizedBox(height: 15),

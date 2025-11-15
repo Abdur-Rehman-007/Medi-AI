@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'student_registration_screen.dart';
-import 'faculty_registration_screen.dart';
 import 'package:medi_ai_app/services/api_service.dart';
 
 class SignupScreen extends StatefulWidget {

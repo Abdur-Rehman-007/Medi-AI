@@ -12,9 +12,9 @@ from pydantic import BaseModel
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # JWT configuration
-SECRET_KEY = "your-secret-key-change-this-in-production"  # Change this in production
+SECRET_KEY = "e8dc04166fd722cc686d961569cbfb7efcb41d4d6f337670d9f94f33e170b40c"  # Change this in production
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 class Token(BaseModel):
     access_token: str

@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Text, Enum
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Text
 from sqlalchemy.ext.declarative import declarative_base
-from datetime import datetime
+from datetime import datetime, timezone
 
 Base = declarative_base()
 
@@ -10,8 +10,8 @@ class User(Base):
     fullname = Column(String(150))
     email = Column(String(150), unique=True)
     password_hash = Column(String(255))
-    role = Column(String(20))
-    created_at = Column(DateTime, default=datetime.utcnow)
+    role = Column(String(50))
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class Student(Base):
     __tablename__ = "students"
@@ -48,7 +48,7 @@ class Appointment(Base):
     appointment_date = Column(DateTime)
     status = Column(String(50), default="pending")
     reason = Column(String(255))
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class AIConsultation(Base):
     __tablename__ = "ai_consultations"
@@ -57,7 +57,7 @@ class AIConsultation(Base):
     symptoms = Column(Text)
     ai_response = Column(Text)
     severity_level = Column(String(20), default="low")
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class SymptomLog(Base):
     __tablename__ = "symptom_logs"
@@ -65,7 +65,7 @@ class SymptomLog(Base):
     user_id = Column(Integer, ForeignKey("users.user_id"))
     symptom_description = Column(Text)
     ai_response = Column(Text)
-    logged_at = Column(DateTime, default=datetime.utcnow)
+    logged_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
 class Reminder(Base):
     __tablename__ = "reminders"
@@ -86,10 +86,12 @@ class AuditLog(Base):
     user_id = Column(Integer, ForeignKey("users.user_id"))
     action = Column(String(255))
     description = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
     
 def analyze_symptoms(symptom_text):
+    # simple placeholder: echo the input symptoms and return a stub diagnosis
     return {
+        "symptoms": symptom_text,
         "diagnosis": "Possible viral infection",
         "confidence": "medium"
     }
